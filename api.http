@@ -1,0 +1,15 @@
+GET http://localhost:3000/events
+
+###
+
+POST http://localhost:3000/events
+Content-Type: application/json
+
+{
+    "name": "new event",
+    "description": "description of new event",
+    "date": "2024-06-18T11:45:23.000Z",
+    "price": 200
+}
+
+$eventId = 
