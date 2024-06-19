@@ -1,15 +1,64 @@
-GET http://localhost:3000/events
+@baseUrl = http://localhost:3000
+
+GET {{baseUrl}}/events
 
 ###
-
-POST http://localhost:3000/events
+# @name createEvent
+POST {{baseUrl}}/events
 Content-Type: application/json
 
 {
-    "name": "new event",
+    "name": "new event 3",
+    "description": "description of new event",
+    "date": "2024-06-18T11:45:23.000Z",
+    "price": 200
+}
+###
+
+@eventId = {{createEvent.response.body.id}}
+
+###
+GET {{baseUrl}}/events/{{eventId}}
+
+###
+PATCH {{baseUrl}}/events/{{eventId}}
+Content-Type: application/json
+
+{
+    "name": "new event alterado",
     "description": "description of new event",
     "date": "2024-06-18T11:45:23.000Z",
     "price": 200
 }
 
-$eventId = 
+### 
+DELETE {{baseUrl}}/events/{{eventId}}
+
+###
+GET {{baseUrl}}/events/{{eventId}}/spots
+
+###
+# @name createSpot
+POST {{baseUrl}}/events/{{eventId}}/spots
+Content-Type: application/json
+
+{
+    "name": "A5"
+}
+###
+
+@spotId = {{createSpot.response.body.id}}
+
+###
+GET {{baseUrl}}/events/{{eventId}}/spots/{{spotId}}
+
+###
+PATCH {{baseUrl}}/events/{{eventId}}/spots/{{spotId}}
+Content-Type: application/json
+
+{
+    "name": "A1"
+}
+
+### 
+DELETE {{baseUrl}}/events/{{eventId}}/spots/{{spotId}}
