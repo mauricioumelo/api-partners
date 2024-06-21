@@ -43,7 +43,21 @@ POST {{baseUrl}}/events/{{eventId}}/spots
 Content-Type: application/json
 
 {
+    "name": "A4"
+}
+###
+POST {{baseUrl}}/events/{{eventId}}/spots
+Content-Type: application/json
+
+{
     "name": "A5"
+}
+###
+POST {{baseUrl}}/events/{{eventId}}/spots
+Content-Type: application/json
+
+{
+    "name": "A6"
 }
 ###
 
@@ -62,3 +76,14 @@ Content-Type: application/json
 
 ### 
 DELETE {{baseUrl}}/events/{{eventId}}/spots/{{spotId}}
+
+###
+POST {{baseUrl}}/events/{{eventId}}/reserve
+Content-Type: application/json
+
+{
+    "spots": ["A4","A5","A6"],
+    "email": "email@test.com",
+    "ticket_kind": ["full", "full", "half"],
+    "price": 200
+}

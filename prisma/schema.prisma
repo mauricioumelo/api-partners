@@ -46,7 +46,6 @@ model Ticket {
   id         String       @id @default(uuid())
   email      String
   ticketKind TicketKind
-  status     TicketStatus
   created_at DateTime     @default(now())
   updated_at DateTime     @updatedAt
   spotId     String       @unique
@@ -60,7 +59,7 @@ model ReservationHistory {
   status     TicketStatus
   created_at DateTime     @default(now())
   updated_at DateTime     @updatedAt
-  spotId     String       
+  spotId     String
   spot       Spot         @relation(fields: [spotId], references: [id])
 }
 
