@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '@app/core/prisma/prisma.service';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { Prisma, SpotStatus, TicketStatus } from '@prisma/client';
 import { ReserveSpotDto } from './dto/reserve-spot.dto';
@@ -22,9 +22,9 @@ export class EventsService {
     return this.prismaService.event.findFirst({ where: { id: id } });
   }
 
-  update(id: string, updateEventDto: UpdateEventDto) {
+  update(id: string, updateEventRequest: UpdateEventDto) {
     return this.prismaService.event.update({
-      data: updateEventDto,
+      data: updateEventRequest,
       where: { id: id },
     });
   }

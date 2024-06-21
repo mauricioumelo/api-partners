@@ -8,9 +8,10 @@ import {
   Delete,
   HttpCode,
 } from '@nestjs/common';
-import { SpotsService } from './spots.service';
-import { CreateSpotDto } from './dto/create-spot.dto';
-import { UpdateSpotDto } from './dto/update-spot.dto';
+
+import { CreateSpotRequest } from './dto/create-spot.request';
+import { UpdateSpotRequest } from './dto/update-spot.request';
+import { SpotsService } from '@app/core/spots/spots.service';
 
 @Controller('events/:eventId/spots')
 export class SpotsController {
@@ -19,9 +20,9 @@ export class SpotsController {
   @Post()
   create(
     @Param('eventId') eventId: string,
-    @Body() createSpotDto: CreateSpotDto,
+    @Body() createSpotRequest: CreateSpotRequest,
   ) {
-    return this.spotsService.create(eventId, createSpotDto);
+    return this.spotsService.create(eventId, createSpotRequest);
   }
 
   @Get()
@@ -38,9 +39,9 @@ export class SpotsController {
   update(
     @Param('eventId') eventId: string,
     @Param('id') id: string,
-    @Body() updateSpotDto: UpdateSpotDto,
+    @Body() updateSpotRequest: UpdateSpotRequest,
   ) {
-    return this.spotsService.update(eventId, id, updateSpotDto);
+    return this.spotsService.update(eventId, id, updateSpotRequest);
   }
 
   @HttpCode(204)
