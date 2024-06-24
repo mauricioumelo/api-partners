@@ -7,12 +7,15 @@ import {
   Param,
   Delete,
   HttpCode,
+  UseGuards,
 } from '@nestjs/common';
 import { ReserveSpotRequest } from './request/reserve-spot.request';
 import { EventsService } from '@app/core';
 import { CreateEventRequest } from './request/create-event.request';
 import { UpdateEventRequest } from './request/update-event.request';
+import { AuthGuard } from '@app/core/auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('events')
 export class EventsController {
   constructor(private readonly eventsService: EventsService) {}

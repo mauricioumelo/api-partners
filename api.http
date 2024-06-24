@@ -1,11 +1,13 @@
 @baseUrl = http://localhost:3000
 
 GET {{baseUrl}}/events
+Content-Type: application/json
+X-Api-Token: Partner!23
 
 ###
 # @name createEvent
 POST {{baseUrl}}/events
-Content-Type: application/json
+Content-Type: application/jsonv
 
 {
     "name": "new event 3",
